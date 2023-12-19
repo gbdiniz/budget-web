@@ -7,15 +7,18 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg rounded">
             <div class="p-4">
-                <h1>@yield('content-title')</h1>
-                <form action="@yield('action')" method="@yield('form-type')">
+                <h1>@yield('content-title') um regitro</h1>
+                <form action="{{ route('budget-update', ['id'=> $register -> id]) }}" method="POST">
                     @csrf
-                    @method(@yield('form-type'))
+                    @if(View::getSection('content-title')=='Editar')
+                    @method('PUT')
+
+                    @endif
                     <div class="form-group">
                         <div class="form-group">
                             <label for="tipo">Tipo: </label>
                             <select class="form-select" name="tipo" aria-label="Escolher a categoria">
-                                <option value="Receita" selected>Receita</option>
+                                <option value="Receita" selected="selected">Receita</option>
                                 <option value="Despesa">Despesa</option>
                             </select>
                         </div>

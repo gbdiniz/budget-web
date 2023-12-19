@@ -41,9 +41,21 @@ class Controller extends BaseController
     {
         $register = Register::where('id', $id)->first();
         if (!empty($register)) {
-            return View('crud.edit', ['id' => $id]);
+            return View('crud.edit', ['register' => $register]);
         } else {
             return redirect()->route('dashboard');
         }
+    }
+
+    public function update(Request $request, $id)
+    {
+        $data = [
+            'tipo' => $request->tipo,
+            'nome' => $request->nome,
+            'valor' => $request->valor,
+            'categoria' => $request->categoria,
+        ];
+        Register::where('id', $id)->update($data);
+        return redirect()->route('dashboard');
     }
 }

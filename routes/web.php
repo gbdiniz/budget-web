@@ -27,4 +27,5 @@ Route::delete('/{id}', [Controller::class, 'destroy'])->where('id', '[0-9]+')->n
 
 Route::get('/{id}/edit', [Controller::class, 'edit'])->where('id', '[0-9]+')->name('budget-edit');
 
+Route::put('/{id}', [Controller::class, 'update'])->where('id', '[0-9]+')->name('budget-update');
 require __DIR__ . '/auth.php';
